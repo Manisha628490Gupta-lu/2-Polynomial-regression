@@ -1,0 +1,82 @@
+Polynomial Regression is a form of linear regression in which the relationship between the independent variable x and dependent variable y is modelled as an nth-degree polynomial. Polynomial regression fits a nonlinear relationship between the value of x and the corresponding conditional mean of y, denoted E(y | x). In this article, we’ll go in-depth about polynomial regression.
+
+Example: 2D Polynomial Regression
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
+import seaborn as sns
+
+
+# Load the dataset
+file_path = r'C:\Users\abc\Downloads\polynomial.csv'
+try:
+    dataset = pd.read_csv(file_path)
+    print("Dataset loaded successfully.")
+except FileNotFoundError:
+    print(f"File not found: {file_path}")
+
+# Display the dataset
+print(dataset.head())
+
+# Extracting the independent variable (assuming it's the second column)
+x = dataset.iloc[:, 1:2].values
+print("Independent variable (x):")
+print(x)
+
+# Extracting the dependent variable (assuming it's the third column)
+y = dataset.iloc[:, 2].values
+print("Dependent variable (y):")
+print(y)
+ax = plt.axes(projection="3d")
+# Plotting the data
+ax.scatter(x, y)
+ax.title('Scatter plot of x vs y')
+ax.xlabel('x')
+ax.ylabel('y')
+ax.show()
+sns.lmplot(x='Period',y='Data_value',data=dataset)
+
+
+
+
+
+
+
+Example: 3D Polynomial Regression
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataset
+file_path = r'C:\Users\abc\Downloads\polynomial.csv'
+try:
+    dataset = pd.read_csv(file_path)
+    print("Dataset loaded successfully.")
+except FileNotFoundError:
+    print(f"File not found: {file_path}")
+
+# Display the dataset
+print(dataset.head())
+
+# Extracting the data for plotting
+x = dataset['Period']
+y = dataset['Data_value']
+ax = plt.axes(projection="3d")
+# Plotting the data
+ax.figure(figsize=(10, 6))
+ax.plot(x, y, marker='o', linestyle='-', color='b')
+ax.title('Line plot of Period vs Data_value')
+ax.xlabel('Period')
+ax.ylabel('Data_value')
+ax.grid(True)
+ax.show()
+
+
+
+
+
+
+
